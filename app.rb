@@ -15,20 +15,27 @@ class Docs
       key :title, 'EveOnline CREST API in Swagger format'
       key :description, 'EveOnline CREST API in Swagger format'
     end
+    key :schemes, ['https']
     key :host, 'public-crest.eveonline.com'
     key :basePath, '/'
     key :consumes, ['application/json']
     key :produces, ['application/json']
   end
+
+  swagger_path '/alliances/' do
+    operation :get do
+      key :description, 'The alliances resource allows an application to read alliances data'
+      response 200 do
+        key :description, 'Alliances list'
+      end
+    end
+  end
 end
 
 # A list of all classes that have swagger_* declarations.
 SWAGGERED_CLASSES = [
-  # PetsController,
-  # Pet,
-  # ErrorModel,
   Docs,
-  self,
+  self
 ].freeze
 
 get '/' do
@@ -40,4 +47,3 @@ get '/doc' do
 
   Swagger::Blocks.build_root_json(SWAGGERED_CLASSES).to_json
 end
-
