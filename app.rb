@@ -118,7 +118,7 @@ class Docs
       end
     end
   end
-  
+
   swagger_path '/types/' do
     operation :get do
       key :description, 'Get Types'
@@ -128,7 +128,7 @@ class Docs
       end
     end
   end
-  
+
   swagger_path '/types/{type_id}/' do
     operation :get do
       key :description, 'Get Type info'
