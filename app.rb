@@ -20,11 +20,47 @@ class Docs
     key :basePath, '/'
     key :consumes, ['application/json']
     key :produces, ['application/json']
+    tag do
+      key :name, 'alliances'
+      key :description, 'Alliances operations'
+    end
+    tag do
+      key :name, 'constellations'
+      key :description, 'Constellations operations'
+    end
+  end
+
+  swagger_path '/constellations/' do
+    operation :get do
+      key :description, 'Get Constellations'
+      key :tags, ['constellations']
+      response 200 do
+        key :description, 'Constellations list'
+      end
+    end
+  end
+
+  swagger_path '/constellations/{constellation_id}/' do
+    operation :get do
+      key :description, 'Get Constellation'
+      key :tags, ['constellations']
+      parameter do
+        key :name, 'constellation_id'
+        key :in, :path
+        key :description, 'Constellation ID'
+        key :required, true
+        key :type, :string
+      end
+      response 200 do
+        key :description, 'Constellation response'
+      end
+    end
   end
 
   swagger_path '/alliances/' do
     operation :get do
       key :description, 'Get Alliances'
+      key :tags, ['alliances']
       response 200 do
         key :description, 'Alliances list'
       end
@@ -34,6 +70,7 @@ class Docs
   swagger_path '/alliances/{alliance_id}/' do
     operation :get do
       key :description, 'Get Alliance'
+      key :tags, ['alliances']
       parameter do
         key :name, 'alliance_id'
         key :in, :path
