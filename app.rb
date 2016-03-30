@@ -24,9 +24,25 @@ class Docs
 
   swagger_path '/alliances/' do
     operation :get do
-      key :description, 'The alliances resource allows an application to read alliances data'
+      key :description, 'Get Alliances'
       response 200 do
         key :description, 'Alliances list'
+      end
+    end
+  end
+
+  swagger_path '/alliances/{alliance_id}/' do
+    operation :get do
+      key :description, 'Get Alliance'
+      parameter do
+        key :name, 'alliance_id'
+        key :in, :path
+        key :description, 'Alliance ID'
+        key :required, true
+        key :type, :string
+      end
+      response 200 do
+        key :description, 'Alliance response'
       end
     end
   end
