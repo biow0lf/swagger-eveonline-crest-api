@@ -28,6 +28,14 @@ class Docs
       key :name, 'constellations'
       key :description, 'Constellations operations'
     end
+    tag do
+      key :name, 'planets'
+      key :description, 'Planets operations'
+    end
+    tag do
+      key :name, 'types'
+      key :description, 'Types operations'
+    end
   end
 
   swagger_path '/constellations/' do
@@ -57,12 +65,39 @@ class Docs
     end
   end
 
+  swagger_path '/planets/' do
+    operation :get do
+      key :description, 'Get Planets (Not Implemented)'
+      key :tags, ['planets']
+      response 200 do
+        key :description, 'Planets list response'
+      end
+    end
+  end
+
+  swagger_path '/planets/{planet_id}/' do
+    operation :get do
+      key :description, 'Get Planet info'
+      key :tags, ['planets']
+      parameter do
+        key :name, 'planet_id'
+        key :in, :path
+        key :description, 'Planet ID'
+        key :required, true
+        key :type, :string
+      end
+      response 200 do
+        key :description, 'Planet response'
+      end
+    end
+  end
+
   swagger_path '/alliances/' do
     operation :get do
       key :description, 'Get Alliances'
       key :tags, ['alliances']
       response 200 do
-        key :description, 'Alliances list'
+        key :description, 'Alliances list response'
       end
     end
   end
@@ -80,6 +115,33 @@ class Docs
       end
       response 200 do
         key :description, 'Alliance response'
+      end
+    end
+  end
+  
+  swagger_path '/types/' do
+    operation :get do
+      key :description, 'Get Types'
+      key :tags, ['types']
+      response 200 do
+        key :description, 'Get Types list'
+      end
+    end
+  end
+  
+  swagger_path '/types/{type_id}/' do
+    operation :get do
+      key :description, 'Get Type info'
+      key :tags, ['types']
+      parameter do
+        key :name, 'type_id'
+        key :in, :path
+        key :description, 'Type ID'
+        key :required, true
+        key :type, :string
+      end
+      response 200 do
+        key :description, 'Type response'
       end
     end
   end
