@@ -8,6 +8,43 @@ end
 class Docs
   include Swagger::Blocks
 
+  swagger_schema :OutputConstellationsList do
+    key :required, [:totalCount_str, :items, :pageCount, :pageCount_str, :totalCount]
+    property :totalCount_str do
+      key :type, :string
+    end
+    property :items do
+      key :type, :array
+      items do
+        key :required, [:id_str, :href, :id, :name]
+        property :id_str do
+          key :type, :string
+        end
+        property :href do
+          key :type, :string
+        end
+        property :id do
+          key :type, :integer
+          key :format, :int64
+        end
+        property :name do
+          key :type, :string
+        end
+      end
+    end
+    property :pageCount do
+      key :type, :integer
+      key :format, :int64
+    end
+    property :pageCount_str do
+      key :type, :string
+    end
+    property :totalCount do
+      key :type, :integer
+      key :format, :int64
+    end
+  end
+
   swagger_root do
     key :swagger, '2.0'
     info do
@@ -44,6 +81,9 @@ class Docs
       key :tags, ['constellations']
       response 200 do
         key :description, 'Constellations list'
+        schema do
+          key :'$ref', :OutputConstellationsList
+        end
       end
     end
   end
