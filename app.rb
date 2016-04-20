@@ -55,6 +55,49 @@ class Docs
   end
 
   swagger_schema :OutputAlliancesList do
+    key :required, [:totalCount_str, :pageCount, :items, :next, :totalCount, :pageCount_str]
+    property :totalCount_str do
+      key :type, :string
+    end
+    property :pageCount do
+      key :type, :integer
+      key :format, :int64
+    end
+    property :items do
+      key :type, :array
+      items do
+        key :required, [:id_str, :shortName, :href, :id, :name]
+        property :id_str do
+          key :type, :string
+        end
+        property :shortName do
+          key :type, :string
+        end
+        property :href do
+          key :type, :string
+        end
+        property :id do
+          key :type, :integer
+          key :format, :int64
+        end
+        property :name do
+          key :type, :string
+        end
+      end
+    end
+    property :next do
+      key :required, [:href]
+      property :href do
+        key :type, :string
+      end
+    end
+    property :totalCount do
+      key :type, :integer
+      key :format, :int64
+    end
+    property :pageCount_str do
+      key :type, :string
+    end
   end
 
   swagger_schema :OutputAlliance do
