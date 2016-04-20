@@ -45,6 +45,27 @@ class Docs
     end
   end
 
+  swagger_schema :OutputConstellation do
+  end
+
+  swagger_schema :OutputPlanetsList do
+  end
+
+  swagger_schema :OutputPlanet do
+  end
+
+  swagger_schema :OutputAlliancesList do
+  end
+
+  swagger_schema :OutputAlliance do
+  end
+
+  swagger_schema :OutputTypesList do
+  end
+
+  swagger_schema :OutputType do
+  end
+
   swagger_root do
     key :swagger, '2.0'
     info do
@@ -101,6 +122,9 @@ class Docs
       end
       response 200 do
         key :description, 'Constellation response'
+        schema do
+          key :'$ref', :OutputConstellation
+        end
       end
     end
   end
@@ -111,6 +135,9 @@ class Docs
       key :tags, ['planets']
       response 200 do
         key :description, 'Planets list response'
+        schema do
+          key :'$ref', :OutputPlanetsList
+        end
       end
     end
   end
@@ -128,6 +155,9 @@ class Docs
       end
       response 200 do
         key :description, 'Planet response'
+        schema do
+          key :'$ref', :OutputPlanet
+        end
       end
     end
   end
@@ -138,6 +168,9 @@ class Docs
       key :tags, ['alliances']
       response 200 do
         key :description, 'Alliances list response'
+        schema do
+          key :'$ref', :OutputAlliancesList
+        end
       end
     end
   end
@@ -155,6 +188,9 @@ class Docs
       end
       response 200 do
         key :description, 'Alliance response'
+        schema do
+          key :'$ref', :OutputAlliance
+        end
       end
     end
   end
@@ -165,6 +201,9 @@ class Docs
       key :tags, ['types']
       response 200 do
         key :description, 'Get Types list'
+        schema do
+          key :'$ref', :OutputTypesList
+        end
       end
     end
   end
@@ -182,6 +221,9 @@ class Docs
       end
       response 200 do
         key :description, 'Type response'
+        schema do
+          key :'$ref', :OutputType
+        end
       end
     end
   end
